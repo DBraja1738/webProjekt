@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts/script.js"></script>
+  <script src="scripts/editOrderScript.js"></script>
+  <script src="scripts/editCalculationScript.js"></script>
+
+
+
+</head>
+
+<body>
+  <h1 class="text-center">Create your own custom tank</h1>
+  <form action="edit_order_submission.php" id="craftingForm" method="POST">
+    <div class="container-fluid" id="craftingFormDiv">
+        <div class="row" id="first">
+          <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="radio" class="btn-check" name="hullRadio" id="westHull" onclick="showWestCal()" autocomplete="off" value="West Hull">
+            <label class="btn btn-outline-secondary" for="westHull">Western Hull</label>
+          
+            <input type="radio" class="btn-check" name="hullRadio" id="pactHull" autocomplete="off" onclick="showEastCal()" value="East Hull">
+            <label class="btn btn-outline-secondary" for="pactHull">Pact Hull</label>
+          </div>
+        </div>
+
+        
+    
+        <div class="row skriven" id="westCalForm">
+            <div class="btn-group" role="group">
+                <input class="btn-check" type="radio" name="calibre" id="84mm" onclick="showChassis()" autocomplete="off" value="84mm">
+                <label class="btn btn-outline-secondary" for="84mm">84mm</label>
+
+                <input class="btn-check" type="radio" name="calibre" id="105mm" onclick="showChassis()" autocomplete="off" value="105mm">
+                <label class="btn btn-outline-secondary" for="105mm">105mm</label>
+
+                <input class="btn-check" type="radio" name="calibre" id="120mm" onclick="showChassis()" autocomplete="off" value="120mm">
+                <label class="btn btn-outline-secondary" for="120mm">120mm</label>
+            </div>
+        </div>
+    
+        <div class="row skriven" id="eastCalForm">
+            <div class="btn-group" role="group">
+                <input class="btn-check" type="radio" name="calibre" id="100mm" onclick="showChassis()" autocomplete="off" value="100mm">
+                <label class="btn btn-outline-secondary" for="100mm">100mm</label>
+
+                <input class="btn-check" type="radio" name="calibre" id="115mm" onclick="showChassis()" autocomplete="off" value="115mm">
+                <label class="btn btn-outline-secondary" for="115mm">115mm</label>
+
+                <input class="btn-check" type="radio" name="calibre" id="125mm" onclick="showChassis()" autocomplete="off" value="125mm">
+                <label class="btn btn-outline-secondary" for="125mm">125mm</label>
+            </div>
+        </div>
+        
+        <div class="row skriven" id="chassis">
+          <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="radio" class="btn-check" name="chassisRadio" id="wheeled" onclick="showAddons()" autocomplete="off" value="Wheeled">
+            <label class="btn btn-outline-secondary" for="wheeled">Wheeled chassis</label>
+          
+            <input type="radio" class="btn-check" name="chassisRadio" id="tracked" autocomplete="off" onclick="showAddons()" value="Tracked">
+            <label class="btn btn-outline-secondary" for="tracked">Tracked chassis</label>
+          </div>
+        </div>
+
+        
+
+
+        
+    </div>
+
+    <div class="containter-fluid skriven" id="bonusOptions">
+      <h3>Addons</h3>
+
+      <div class="row">
+        <div class="btn-group" role="group">
+          <input type="checkbox" class="btn-check" name="bonus[]" id="addthermal" value="thermal" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="addthermal">Thermal imaging</label>
+
+          <input type="checkbox" class="btn-check" name="bonus[]" id="addera" value="era" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="addera">Explosive reactive armor</label>
+
+          <input type="checkbox" class="btn-check" name="bonus[]" id="addcomp" value="comp" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="addcomp">Composite screens</label>
+
+          
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="btn-group" role="group">
+          <input type="checkbox" class="btn-check" name="bonus[]" id="addfcs" value="fcs" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="addfcs">Digital Fire Control System</label>
+
+          <input type="checkbox" class="btn-check" name="bonus[]" id="addsmoke" value="smoke" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="addsmoke">Smoke Grenade Launchers</label>
+
+          <input type="checkbox" class="btn-check" name="bonus[]" id="adddrone" value="drone" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="adddrone">Recon Drone Launcher</label>
+
+          <input type="hidden" name="totalPrice" id="hiddenTotalPrice" value="">
+          <input type="hidden" name="orderID" id="hiddenOrderID" value="">
+        </div>
+          
+        <div class="container-fluid">
+          <div class="d-grid gap-2 col-6 mx-auto">
+              <p id="totalPrice"></p>
+              <button type="button" class="btn btn-secondary" onclick="calculatePrice()">Calculate price of configuration</button>
+              <input type="submit" value="Submit Configuration" class="btn btn-primary" onclick="beforeSubmit(event)">
+  
+              
+          </div>
+       </div>
+
+      </div>
+
+    </div>
+
+
+  </form>
+
+
+</body>
+
+
+
+</html>
